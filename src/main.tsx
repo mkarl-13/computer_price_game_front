@@ -1,9 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ThemeProvider } from "./components/theme-provider";
-import { Leaderboard } from "./pages/Leaderboard";
-import { Game } from "./pages/Game";
+import { ThemeProvider } from "@/providers/theme-provider";
+import { Game } from "@/pages/Game";
+import { Leaderboard } from "@/pages/Leaderboard";
 
 import "./index.css";
 

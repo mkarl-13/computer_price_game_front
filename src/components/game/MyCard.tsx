@@ -1,50 +1,43 @@
-import type { Computer } from "@/types/Computer";
+import type { GameState } from "@/types/GameStateType";
+
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+
 import { ComputerSpecs } from "./ComputerSpecs";
 import { PlayerInput } from "./PlayerInput";
 
 export const MyCard = ({
-  computer,
-  image,
-  guessPrice,
-  setGuessPrice,
-  onSubmitGuess,
-  score,
-  hasWon,
+  setGameState,
+  gameState,
+  gameId,
 }: {
-  computer: Computer;
-  image: string;
-  guessPrice: number;
-  setGuessPrice: React.Dispatch<React.SetStateAction<number>>;
-  onSubmitGuess: () => void;
-  score: number;
-  hasWon: boolean;
+  setGameState: React.Dispatch<React.SetStateAction<GameState | null>>;
+  gameState: GameState;
+  gameId: string;
 }) => {
   return (
     <Card className="flex flex-col p-4">
       <div className="flex flex-row w-4xl">
         <div className="my-auto">
           <img
-            src={image}
+            src={gameState.rounds[gameState.currentRound].computer.case.image}
             className="rounded-lg max-w-sm h-auto aspect-square object-cover"
           />
         </div>
         <div className="ml-4">
-          <ComputerSpecs computer={computer} hasWon={hasWon} />
+          <ComputerSpecs gameState={gameState} />
         </div>
       </div>
       <Separator />
       <div className="flex flex-row justify-center -mb-4">
         <PlayerInput
-          setGuessPrice={setGuessPrice}
-          guessPrice={guessPrice}
-          onSubmitGuess={onSubmitGuess}
-          hasWon={hasWon}
+          gameId={gameId}
+          setGameState={setGameState}
+          gameState={gameState}
         />
       </div>
       <h1 className="text-center text-lg">
-        Current Score: <span className="font-semibold">{score}</span>
+        Score: <span className="font-semibold">{gameState.score}</span>
       </h1>
     </Card>
   );

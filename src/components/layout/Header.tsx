@@ -7,13 +7,13 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Link } from "react-router-dom";
 
-import { ModeToggle } from "./mode-toggle";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 
 export const Header = () => {
   return (
     <div className="flex justify-between items-center p-4">
       <NavigationMenu>
-        <NavigationMenuList>
+        <NavigationMenuList className="gap-4">
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
               <Link to="/" className={navigationMenuTriggerStyle()}>
